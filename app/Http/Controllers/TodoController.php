@@ -45,8 +45,8 @@ class TodoController extends Controller
     
     public function edit($id){
 
-        $data = DB::table("todos")->where("id", $id)->get();
-        return view("edit", ["data" => $data[0]]);   
+        $data = DB::table("todos")->find($id);
+        return view("edit", ["data" => $data]);   
       
     }
 
