@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+class TodoController extends Controller
+{
+   
+    public function index(){
+
+        $data = DB::table("todos")->get();
+        return view("welcome",compact("data"));
+
+    }
+
+    public function store(Request $req){
+
+        $req->validate([
+
+            "title" => "required|string|max:200",
+            "desc" => "required|string|max:200",
+
+        ]);
+
+    
+        DB::table("todos")->insert([
+          
+            "title" => $req->title,
+            "desc"=>$req->desc
+        ]);
+
+        return redirect()->back()->with('success', 'Data submitted successfully!');
+        
+
+    }
+
+    public function destroy($id){
+        DB::table("todos")->where("id", $id)->delete();
+        return redirect()->back();
+    }
+    
+    
+    public function edit($id){
+
+        $data = DB::table("todos")->where("id", $id)->get();
+        return view("edit", ["data" => $data[0]]);   
+      
+    }
+
+
+    public function update($id, Request $req){
+
+        $req->validate([
+
+            "title" => "required|string|max:200",
+            "desc" => "required|string|max:200"
+
+        ]);
+
+
+        DB::table("todos")->where("id",$id)->update([
+
+            "title" => $req->title,
+            "desc" => $req->desc,
+
+        ]);
+
+        return redirect("/")->with("success", "updated");
+
+    }
+
+}
