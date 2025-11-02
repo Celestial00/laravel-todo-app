@@ -45,7 +45,7 @@ class TodoController extends Controller
 
         DB::table("todos")->where("id", $id)->update([
 
-            "status" => $status == 0 ? 1 : 0
+            "status" => ((int) $status) === 0 ? 1 : 0
 
         ]);
 

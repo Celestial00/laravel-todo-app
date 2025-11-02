@@ -90,22 +90,24 @@
                         </div>
 
 
+
+
                         <div class="flex gap-2">
 
-                            @if ($todo->status)
-                                <a href="/status/{{ $todo->id }}/{{ $todo->status }}"
-                                    class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
+                            <a href="/status/{{ $todo->id }}/{{ $todo->status }}"
+                                class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
+
+                                @if ($todo->status)
                                     <i class="fas fa-check"></i>
-
-                                </a>
-                            @else
-                                <a href="/status/{{ $todo->id }}/{{ $todo->status }}"
-                                    class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
+                                @else
                                     <i class="far fa-circle"></i>
+                                @endif
 
 
-                                </a>
-                            @endif
+                            </a>
+
+
+
 
                             <a href="/edit/{{ $todo->id }}"
                                 class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
