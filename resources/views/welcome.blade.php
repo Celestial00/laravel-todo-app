@@ -12,6 +12,7 @@
 <body class="bg-gray-100 min-h-screen py-8 px-4">
     <div class="max-w-4xl mx-auto">
 
+
         <header class="text-center mb-12">
             <h1 class="text-7xl font-bold text-black mb-2">Todo List</h1>
 
@@ -88,7 +89,24 @@
 
                         </div>
 
+
                         <div class="flex gap-2">
+
+                            @if ($todo->status)
+                                <a href="/status/{{ $todo->id }}/{{ $todo->status }}"
+                                    class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
+                                    <i class="fas fa-check"></i>
+
+                                </a>
+                            @else
+                                <a href="/status/{{ $todo->id }}/{{ $todo->status }}"
+                                    class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
+                                    <i class="far fa-circle"></i>
+
+
+                                </a>
+                            @endif
+
                             <a href="/edit/{{ $todo->id }}"
                                 class="bg-gray-800 rounded-lg hover:bg-black text-white py-2 px-4 flex items-center gap-2 cursor-pointer">
 

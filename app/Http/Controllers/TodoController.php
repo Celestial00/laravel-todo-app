@@ -29,13 +29,32 @@ class TodoController extends Controller
         DB::table("todos")->insert([
           
             "title" => $req->title,
-            "desc"=>$req->desc
+            "desc"=>$req->desc,
+            "created_at" => now(),
+            
+
         ]);
 
         return redirect()->back();
         
 
     }
+
+
+    public function updateStatus($id, $status){
+
+        DB::table("todos")->where("id", $id)->update([
+
+            "status" => $status == 0 ? 1 : 0
+
+        ]);
+
+        return redirect()->back();
+
+    }
+
+
+
 
     public function destroy($id){
         DB::table("todos")->where("id", $id)->delete();
@@ -65,6 +84,7 @@ class TodoController extends Controller
 
             "title" => $req->title,
             "desc" => $req->desc,
+            "updated_at" => now(),
 
         ]);
 
