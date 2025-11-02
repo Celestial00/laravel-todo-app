@@ -32,7 +32,7 @@ class TodoController extends Controller
             "desc"=>$req->desc
         ]);
 
-        return redirect()->back()->with('success', 'Data submitted successfully!');
+        return redirect()->back();
         
 
     }

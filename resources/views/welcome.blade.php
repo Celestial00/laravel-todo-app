@@ -67,13 +67,20 @@
                             <div class="flex flex-column items-center gap-6">
 
                                 <div class="">
-                                    <h3 class="text-xl font-medium text-black">{{ $todo->title }}</h3>
+                                    <p class=" text-gray-400 ">Title</p>
+
+                                    <div class="">
+                                        <h3 class="text-xl font-medium text-black">{{ $todo->title }}</h3>
+                                    </div>
                                 </div>
 
 
                                 <div class="">
-                                    <p class="text-gray-600">{{ $todo->desc }}
-                                    </p>
+                                    <p class=" text-gray-400 ">Description</p>
+                                    <div class="">
+                                        <p class="text-gray-600">{{ $todo->desc }}
+                                        </p>
+                                    </div>
                                 </div>
 
 
